@@ -38,6 +38,11 @@ This repository contains the code for to train the BigEarthNet dataset [[1]](#1)
 ## Usage
 
 ```bash
+conda env create -f environment.yml
+conda activate balanced-bigearthnet
+```
+
+```bash
 python train.py --sets [JSON PATH WITH SET PATHS] --epochs [NUMBER OF EPOCHS] --optim [OPTIIMIZER USED] --lr [FLOAT LEARNING RATE] --loss [LOSS FUNCTION USED] --batch [BATCH SIZE] --finetune [FINETUNING LEVEL] --seed [RANDOM SEED] --storage_path [EVENT STORAGE PATH] --count --rgb
 ```
 

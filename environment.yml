@@ -1,4 +1,4 @@
-name: bigearthnet-torch
+name: balanced-bigearthnet
 channels:
   - conda-forge
   - defaults
