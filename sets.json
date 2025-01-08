@@ -1,0 +1,6 @@
+{
+    "train": "train.tfrecord", 
+    "val": "val.tfrecord", 
+    "test": "test.tfrecord",
+    "label_type": "original"
+}

@@ -1,0 +1,23 @@
+{
+    "original_labels":{
+        "Arable land": 0,
+        "Mixed forest": 1,
+        "Coniferous forest": 2,
+        "Transitional woodland, shrub": 3,
+        "Broad-leaved forest": 4,
+        "Land principally occupied by agriculture, with significant areas of natural vegetation": 5,
+        "Complex cultivation patterns": 6,
+        "Pastures": 7,
+        "Urban fabric": 8,
+        "Inland waters": 9,
+        "Marine waters": 10,
+        "Agro-forestry areas": 11,
+        "Permanent crops": 12,
+        "Inland wetlands": 13,
+        "Moors, heathland and sclerophyllous vegetation": 14,
+        "Natural grassland and sparsely vegetated areas": 15,
+        "Industrial or commercial units": 16,
+        "Coastal wetlands": 17,
+        "Beaches, dunes, sands": 18
+    }
+}
