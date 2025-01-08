@@ -1,6 +1,6 @@
 # Implementation on PyTorch for deep learning models on the BigEarthNet dataset
 
-This repository contains the code for to train the BigEarthNet dataset [[1]](#1), using machine learning algorithms.
+This repository contains the code for to train deep learning models on the BigEarthNet dataset [[1]](#1).
 
 <span style="background-color:rgb(255, 0, 0)">Work in progress</span>
 
@@ -37,18 +37,22 @@ This repository contains the code for to train the BigEarthNet dataset [[1]](#1)
 └── train.py
 ```
 
-## Download data
+## Installation
 
+### Data download
 Data description and download link are available on this [https://bigearth.net/v1.0.html](link).
 
 <span style="background-color:rgb(255, 145, 0)">Warning:</span> ~66GB are required to store the data
 
-## Usage
+### Dependencies
 
+Python 3.8.19, PyTorch 2.0.1, Tensorflow 2.13.1, iterative-stratification 0.1.9 [[2]](#2)
 ```bash
 conda env create -f environment.yml
 conda activate balanced-bigearthnet
 ```
+
+## Usage
 
 ```bash
 python train.py --sets [JSON PATH WITH SET PATHS] --epochs [NUMBER OF EPOCHS] --optim [OPTIIMIZER USED] --lr [FLOAT LEARNING RATE] --loss [LOSS FUNCTION USED] --batch [BATCH SIZE] --finetune [FINETUNING LEVEL] --seed [RANDOM SEED] --storage_path [EVENT STORAGE PATH] --count --rgb
@@ -111,15 +115,17 @@ prep_splits.py [-h] [-r ROOT_FOLDER] [-o OUT_FOLDER] [-n PATCH_NAMES [PATCH_NAME
 
 ## Authors
 
+Matthieu Verlynde, Ammar Mian, Yajing Yan
 
 ## References
->  <a id="1">[1]</a>  G. Sumbul, M. Charfuelan, B. Demir, V. Markl, “[BigEarthNet: A Large-Scale Benchmark Archive for Remote Sensing Image Understanding](https://bigearth.net/static/documents/BigEarthNet_IGARSS_2019.pdf)”, IEEE International Geoscience and Remote Sensing Symposium, pp. 5901-5904, Yokohama, Japan, 2019.
+>  <a id="1">[1]</a>  G. Sumbul, M. Charfuelan, B. Demir, V. Markl, “[BigEarthNet: A Large-Scale Benchmark Archive for Remote Sensing Image Understanding](https://bigearth.net/static/documents/BigEarthNet_IGARSS_2019.pdf)”, IEEE International Geoscience and Remote Sensing Symposium, pp. 5901-5904, Yokohama, Japan, 2019.<br>
+>  <a id="2">[2]</a>  C. Sechidis, G. Tsoumakas, I. Vlahavas, “[On the stratification of multi-label data](https://link.springer.com/chapter/10.1007/978-3-642-23808-6_10)” Machine Learning and Knowledge Discovery in Databases, D. Gunopulos, T. Hofmann, D. Malerba, and M. Vazirgiannis, Eds., Berlin, Heidelberg, 2011, pp. 145–158, Springer Berlin Heidelberg.
 
 ## Licence
 
 MIT License
 
-Copyright (c) [year] [fullname]
+Copyright (c) 2025 Matthieu Verlynde
 
 Permission is hereby granted, free of charge, to any person obtaining a copy
 of this software and associated documentation files (the "Software"), to deal
