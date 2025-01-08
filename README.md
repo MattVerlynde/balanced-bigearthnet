@@ -4,11 +4,98 @@ This repository contains the code for to train the BigEarthNet dataset [[1]](#1)
 
 ## Repository structure
 
-
+``
+.
+├── data
+│   └── splits
+│       ├── original
+│       │   ├── test.csv
+│       │   ├── train.csv
+│       │   └── val.csv
+│       └── resampled
+│           ├── test.csv
+│           ├── train.csv
+│           └── val.csv
+├── environment.yml
+├── performance-tracking
+│   ├── experiments
+│   │   ├── conso
+│   │   │   ├── analyse_stats.py
+│   │   │   ├── get_conso.py
+│   │   │   ├── get_stats.py
+│   │   │   ├── query_influx.sh
+│   │   │   ├── simulation_metrics_exec.sh
+│   │   │   ├── stats_summary_deep.py
+│   │   │   └── stats_summary.py
+│   │   ├── conso_change
+│   │   │   ├── cd_sklearn_pair_var.py
+│   │   │   ├── change-detection.py
+│   │   │   ├── functions.py
+│   │   │   ├── get_perf.py
+│   │   │   ├── helpers
+│   │   │   │   └── multivariate_images_tool.py
+│   │   │   ├── main.py
+│   │   │   ├── param_change_glrt_2images.yaml
+│   │   │   ├── param_change_interm.yaml
+│   │   │   ├── param_change_logdiff_2images.yaml
+│   │   │   ├── param_change_robust_2images.yaml
+│   │   │   ├── param_change_robust.yaml
+│   │   │   └── param_change.yaml
+│   │   ├── conso_classif_deep
+│   │   │   ├── classif_deep.py
+│   │   │   ├── get_perf.py
+│   │   │   ├── get_scores.py
+│   │   │   ├── param_classif_deep_Inception.yaml
+│   │   │   ├── param_classif_deep_SCNN_10.yaml
+│   │   │   ├── param_classif_deep_SCNN_strat.yaml
+│   │   │   ├── param_classif_deep_SCNN.yaml
+│   │   │   ├── param_classif_deep_test.yaml
+│   │   │   ├── param_classif_deep.yaml
+│   │   │   ├── read_event.py
+│   │   │   ├── read_events.py
+│   │   │   └── simulation_metrics_exec.sh
+│   │   └── conso_clustering
+│   │       ├── clustering.py
+│   │       ├── get_perf.py
+│   │       ├── helpers
+│   │       │   └── processing_helpers.py
+│   │       ├── param_clustering_interm.yaml
+│   │       ├── param_clustering.yaml
+│   │       ├── plot_clustering.py
+│   │       └── utils_clustering.py
+│   ├── plot_usage.py
+│   ├── README.md
+│   └── simulation_metrics_exec.sh
+├── README.md
+├── sets.json
+├── src
+│   ├── BigEarthNet.py
+│   ├── data_pretreatment
+│   │   ├── label_indices.json
+│   │   ├── prep_splits.py
+│   │   ├── stratified_split.py
+│   │   └── tensorflow_utils.py
+│   └── models
+│       ├── InceptionV1.py
+│       ├── InceptionV2.py
+│       ├── InceptionV3.py
+│       ├── __pycache__
+│       │   ├── InceptionV3.cpython-38.pyc
+│       │   ├── ShortCNN_All.cpython-38.pyc
+│       │   ├── ShortCNN.cpython-38.pyc
+│       │   └── ShortCNN_RGB.cpython-38.pyc
+│       ├── ShortCNN_All.py
+│       └── ShortCNN_RGB.py
+└── train.py
+``
 
 ## Usage
 
 ``python train.py --sets [JSON PATH WITH SET PATHS] --epochs [NUMBER OF EPOCHS] --optim [OPTIIMIZER USED] --lr [FLOAT LEARNING RATE] --loss [LOSS FUNCTION USED] --batch [BATCH SIZE] --finetune [FINETUNING LEVEL] --seed [RANDOM SEED] --storage_path [EVENT STORAGE PATH] --count --rgb``
+
+``stratified_split.py [-h] [-d DATA_FOLDER] [-k NUMBER OF SPLITS] [-o OUTPUT_FOLDER] [-r ROOT_FOLDER] [-tf FLAG TO CREATE TFRECORD FILES]``
+
+``prep_splits.py [-h] [-r ROOT_FOLDER] [-o OUT_FOLDER] [-n PATCH_NAMES [PATCH_NAMES ...]]``
 
 ## Dataset description
 

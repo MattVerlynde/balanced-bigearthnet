@@ -3,10 +3,10 @@ import torch.nn as nn
 import torch.nn.functional as F
 from torch.utils.tensorboard import SummaryWriter
 from tqdm import tqdm
-from models.ShortCNN_RGB import Model as ShortCNNrgb
-from models.ShortCNN_All import Model as ShortCNNall
-from models.InceptionV3 import Model as InceptionV3
-from BigEarthNet import BigEarthNetDataLoader
+from src.models.ShortCNN_RGB import Model as ShortCNNrgb
+from src.models.ShortCNN_All import Model as ShortCNNall
+from src.models.InceptionV3 import Model as InceptionV3
+from src.BigEarthNet import BigEarthNetDataLoader
 
 import warnings
 import argparse
