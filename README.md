@@ -30,7 +30,6 @@ This repository contains the code for to train deep learning models on the BigEa
 │   │   └── tensorflow_utils.py
 │   └── models
 │       ├── InceptionV1.py
-│       ├── InceptionV2.py
 │       ├── InceptionV3.py
 │       ├── ShortCNN_All.py
 │       └── ShortCNN_RGB.py
