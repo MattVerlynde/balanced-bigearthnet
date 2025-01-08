@@ -17,55 +17,6 @@ This repository contains the code for to train the BigEarthNet dataset [[1]](#1)
 │           ├── train.csv
 │           └── val.csv
 ├── environment.yml
-├── performance-tracking
-│   ├── experiments
-│   │   ├── conso
-│   │   │   ├── analyse_stats.py
-│   │   │   ├── get_conso.py
-│   │   │   ├── get_stats.py
-│   │   │   ├── query_influx.sh
-│   │   │   ├── simulation_metrics_exec.sh
-│   │   │   ├── stats_summary_deep.py
-│   │   │   └── stats_summary.py
-│   │   ├── conso_change
-│   │   │   ├── cd_sklearn_pair_var.py
-│   │   │   ├── change-detection.py
-│   │   │   ├── functions.py
-│   │   │   ├── get_perf.py
-│   │   │   ├── helpers
-│   │   │   │   └── multivariate_images_tool.py
-│   │   │   ├── main.py
-│   │   │   ├── param_change_glrt_2images.yaml
-│   │   │   ├── param_change_interm.yaml
-│   │   │   ├── param_change_logdiff_2images.yaml
-│   │   │   ├── param_change_robust_2images.yaml
-│   │   │   ├── param_change_robust.yaml
-│   │   │   └── param_change.yaml
-│   │   ├── conso_classif_deep
-│   │   │   ├── classif_deep.py
-│   │   │   ├── get_perf.py
-│   │   │   ├── get_scores.py
-│   │   │   ├── param_classif_deep_Inception.yaml
-│   │   │   ├── param_classif_deep_SCNN_10.yaml
-│   │   │   ├── param_classif_deep_SCNN_strat.yaml
-│   │   │   ├── param_classif_deep_SCNN.yaml
-│   │   │   ├── param_classif_deep_test.yaml
-│   │   │   ├── param_classif_deep.yaml
-│   │   │   ├── read_event.py
-│   │   │   ├── read_events.py
-│   │   │   └── simulation_metrics_exec.sh
-│   │   └── conso_clustering
-│   │       ├── clustering.py
-│   │       ├── get_perf.py
-│   │       ├── helpers
-│   │       │   └── processing_helpers.py
-│   │       ├── param_clustering_interm.yaml
-│   │       ├── param_clustering.yaml
-│   │       ├── plot_clustering.py
-│   │       └── utils_clustering.py
-│   ├── plot_usage.py
-│   ├── README.md
-│   └── simulation_metrics_exec.sh
 ├── README.md
 ├── sets.json
 ├── src
@@ -79,11 +30,6 @@ This repository contains the code for to train the BigEarthNet dataset [[1]](#1)
 │       ├── InceptionV1.py
 │       ├── InceptionV2.py
 │       ├── InceptionV3.py
-│       ├── __pycache__
-│       │   ├── InceptionV3.cpython-38.pyc
-│       │   ├── ShortCNN_All.cpython-38.pyc
-│       │   ├── ShortCNN.cpython-38.pyc
-│       │   └── ShortCNN_RGB.cpython-38.pyc
 │       ├── ShortCNN_All.py
 │       └── ShortCNN_RGB.py
 └── train.py
