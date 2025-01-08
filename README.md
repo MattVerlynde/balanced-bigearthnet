@@ -2,6 +2,8 @@
 
 This repository contains the code for to train the BigEarthNet dataset [[1]](#1), using machine learning algorithms.
 
+<span style="background-color:rgb(255, 0, 0)">Work in progress</span>
+
 ## Repository structure
 
 ```bash
@@ -34,6 +36,12 @@ This repository contains the code for to train the BigEarthNet dataset [[1]](#1)
 │       └── ShortCNN_RGB.py
 └── train.py
 ```
+
+## Download data
+
+Data description and download link are available on this [https://bigearth.net/v1.0.html](link).
+
+<span style="background-color:rgb(255, 145, 0)">Warning:</span> ~66GB are required to store the data
 
 ## Usage
 
@@ -101,14 +109,12 @@ prep_splits.py [-h] [-r ROOT_FOLDER] [-o OUT_FOLDER] [-n PATCH_NAMES [PATCH_NAME
 | S        | Salines |
 | BA       | Burnt areas |
 
+## Authors
+
+
 ## References
-<a id="1">[1]</a> 
-Gencer Sumbul, Arne de Wall, Tristan Kreuziger, Filipe
-Marcelino, Hugo Costa, Pedro Benevides, Mario Cae-
-tano, Begum Demir, and Volker Markl, “Bigearthnet-
-mm: A large-scale, multimodal, multilabel benchmark
-archive for remote sensing image classification and re-
-trieval,” IEEE Geoscience and Remote Sensing Maga-
-zine, vol. 9, no. 3, pp. 174–180, Sept. 2021.
+>  <a id="1">[1]</a>  G. Sumbul, M. Charfuelan, B. Demir, V. Markl, “[BigEarthNet: A Large-Scale Benchmark Archive for Remote Sensing Image Understanding](https://bigearth.net/static/documents/BigEarthNet_IGARSS_2019.pdf)”, IEEE International Geoscience and Remote Sensing Symposium, pp. 5901-5904, Yokohama, Japan, 2019.
+
+## Licence
 
 
