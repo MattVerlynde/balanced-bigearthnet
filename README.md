@@ -11,6 +11,7 @@ This repository contains the code for to train deep learning models on the BigEa
 ```bash
 .
 ├── data
+│   ├── data_labels_bin.csv
 │   ├── original
 │   │   ├── test.csv
 │   │   ├── train.csv
@@ -19,7 +20,10 @@ This repository contains the code for to train deep learning models on the BigEa
 │       ├── test.csv
 │       ├── train.csv
 │       └── val.csv
+├── doc
+│   └── split_label_distribution.jpg
 ├── environment.yml
+├── LICENCE
 ├── README.md
 ├── sets.json
 ├── src
@@ -29,11 +33,12 @@ This repository contains the code for to train deep learning models on the BigEa
 │   │   ├── prep_splits.py
 │   │   ├── stratified_split.py
 │   │   └── tensorflow_utils.py
-│   └── models
-│       ├── InceptionV1.py
-│       ├── InceptionV3.py
-│       ├── ShortCNN_All.py
-│       └── ShortCNN_RGB.py
+│   ├── models
+│   │   ├── InceptionV1.py
+│   │   ├── InceptionV3.py
+│   │   ├── ShortCNN_All.py
+│   │   └── ShortCNN_RGB.py
+│   └── read_event.py
 └── train.py
 ```
 
@@ -58,12 +63,9 @@ To **create the TFRecord files** containing the data and used in the training fi
 ```bash
 prep_splits.py [-h] [-r ROOT_FOLDER] [-o OUT_FOLDER] [-n PATCH_NAMES [PATCH_NAMES ...]]
 ```
-Example:
-```bash
-prep_splits.py -r BigEarthNet-S2-v1.0/BigEarthNet-v1.0 -o results -n data/original/train.csv data/original/val.csv data/original/test.csv
-```
 
-To **create balanced splits** to create the TFRecord files, use the file `stratified_split.py`.
+To **create balanced splits** to create the TFRecord files, use the file `stratified_split.py`. 
+**Warning:** each splits created will be the same size ! 
 ```bash
 stratified_split.py [-h] [-d DATA_FILE] [-k NUMBER OF SPLITS] [-o OUTPUT_FOLDER] [-r ROOT_FOLDER] [-tf]
 ```
@@ -78,7 +80,30 @@ To **plot your results** after training using the training event file created, u
 python src/read_event.py [-h] [--storage_path EVENT_STORAGE_PATH]
 ```
 
+Example:
+```bash
+stratified_split.py -d data/data_labels_bin.csv -k 5 -o data/resampled -r BigEarthNet-S2-v1.0/BigEarthNet-v1.0
+
+cat data/resampled/fold_0.csv data/resampled/fold_1.csv data/resampled/fold_2.csv > data/resampled/train.csv
+mv data/resampled/fold_3.csv data/resampled/val.csv
+mv data/resampled/fold_4.csv data/resampled/test.csv
+
+prep_splits.py -r BigEarthNet-S2-v1.0/BigEarthNet-v1.0 -o results -n data/resampled/train.csv data/resampled/val.csv data/resampled/test.csv
+train.py --sets sets.json --epochs 100 --optim SGD --lr 0.001 --loss BCEWithLogits --batch 300 --finetune 0 --seed 1 --storage_path results --count --rgb
+```
+
 ## Dataset description
+
+<table>
+  <tr>
+    <td><img src="doc/ex_bigen_1.png" width="200" /></td>
+    <td>Discontinuous urban fabric <br> Beaches, dunes, sands <br> Salt marches <br> Intertidal flats <br> Estuaries</td>
+  </tr>
+  <tr>
+    <td><img src="doc/ex_bigen_2.png" width="200" /></td>
+    <td>Pastures <br> Broad-leaved forest <br> Mixed forest <br> Natural grassland <br> Transitional woodland/shrub</td>
+  </tr>
+ </table>
 
 | Acronym  | Label |
 |----------|-------|
@@ -128,7 +153,9 @@ python src/read_event.py [-h] [--storage_path EVENT_STORAGE_PATH]
 
 ## Authors
 
-Matthieu Verlynde ([matthieu.verlynde@univ-smb.fr](mailto:matthieu.verlynde@univ-smb.fr)), Ammar Mian ([ammar.mian@univ-smb.fr](mailto:ammar.mian@univ-smb.fr)), Yajing Yan ([yajing.yan@univ-smb.fr](mailto:yajing.yan@univ-smb.fr))
+* [Matthieu Verlynde](https://github.com/MattVerlynde) ([matthieu.verlynde@univ-smb.fr](mailto:matthieu.verlynde@univ-smb.fr))
+* [Ammar Mian](https://ammarmian.github.io/) ([ammar.mian@univ-smb.fr](mailto:ammar.mian@univ-smb.fr))
+* [Yajing Yan](https://www.univ-smb.fr/listic/en/presentation_listic/membres/enseignants-chercheurs/yajing-yan-fr/) ([yajing.yan@univ-smb.fr](mailto:yajing.yan@univ-smb.fr))
 
 ## References
 >  <a id="1">[1]</a>  G. Sumbul, M. Charfuelan, B. Demir, V. Markl, “[BigEarthNet: A Large-Scale Benchmark Archive for Remote Sensing Image Understanding](https://bigearth.net/static/documents/BigEarthNet_IGARSS_2019.pdf)”, IEEE International Geoscience and Remote Sensing Symposium, pp. 5901-5904, Yokohama, Japan, 2019.<br>

@@ -10,9 +10,9 @@
 # Email: matthieu.verlynde@univ-smb.fr
 # Date: 8 jan 2024
 # Version: 1.0.0
-# Usage: stratified_split.py [-h] [-d DATA_FOLDER] [-k NUMBER OF SPLITS] [-o OUTPUT_FOLDER] [-r ROOT_FOLDER] [-tf FLAG TO CREATE TFRECORD FILES]
-#                       
-
+# Usage: stratified_split.py [-h] [-d DATA_FILE] [-k NUMBER_OF_SPLITS] [-o OUTPUT_FOLDER] 
+#                            [-r ROOT_FOLDER] [-tf FLAG_TO_CREATE_TFRECORD_FILES]
+                            
 import pandas as pd
 import numpy as np
 from iterstrat.ml_stratifiers import MultilabelStratifiedKFold
@@ -80,11 +80,11 @@ if __name__ == "__main__":
                 split_names.append(x[:-4])
                 patch_names_list.append(pd.read_csv(f"{args.output_path}/{x}", index_col=False, header=None).loc[:,0].to_list())
 
-        with open('data_pretreatment/label_indices.json', 'rb') as f:
+        with open('src/data_pretreatment/label_indices.json', 'rb') as f:
             label_indices = json.load(f)
 
         # print(split_names)
-        print(patch_names_list)
+        # print(patch_names_list)
         prep_tf_record_files(
             root_folder = args.root_folder, 
             out_folder = args.output_path, 

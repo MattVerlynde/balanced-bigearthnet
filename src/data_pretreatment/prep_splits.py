@@ -10,8 +10,7 @@
 # Email: gencer.suembuel@tu-berlin.de
 # Date: 16 Dec 2019
 # Version: 1.0.1
-# Usage: prep_splits.py [-h] [-r ROOT_FOLDER] [-o OUT_FOLDER]
-#                       [-n PATCH_NAMES [PATCH_NAMES ...]]
+# Usage: prep_splits.py [-h] [-r ROOT_FOLDER] [-o OUT_FOLDER] [-n PATCH_NAMES [PATCH_NAMES ...]]
 
 from __future__ import print_function
 import argparse
@@ -23,7 +22,7 @@ from tensorflow_utils import prep_tf_record_files
 GDAL_EXISTED = False
 RASTERIO_EXISTED = False
 
-with open('data_pretreatment/label_indices.json', 'rb') as f:
+with open('src/data_pretreatment/label_indices.json', 'rb') as f:
     label_indices = json.load(f)
 
 if __name__ == "__main__":
