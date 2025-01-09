@@ -1,3 +1,17 @@
+#!/usr/bin/env python
+# -*- coding: utf-8 -*-
+
+# This script creates balanced splits with TFRecord files from BigEarthNet 
+# image patches based on csv files that contain patch names.
+# 
+# train.py --help can be used to learn how to use this script.
+#
+# Author: Matthieu Verlynde
+# Email: matthieu.verlynde@univ-smb.fr
+# Date: 8 jan 2024
+# Version: 1.0.0
+# Usage: train.py [-h] [-d DATA_FOLDER] [-k NUMBER OF SPLITS] [-o OUTPUT_FOLDER] [-r ROOT_FOLDER] [-tf FLAG TO CREATE TFRECORD FILES]      
+
 import torch
 import torch.nn as nn
 import torch.nn.functional as F
@@ -173,7 +187,8 @@ def test(model, test_loader, loss=nn.CrossEntropyLoss(), threshold=0.5, DIR_OUTP
 
 if __name__ == '__main__':
 
-    parser = argparse.ArgumentParser()
+    parser = argparse.ArgumentParser(description=
+        'This script carry out training of deep learning models on the BigEarthNet dataset.')
     parser.add_argument('--sets', type=str, required=True)
     parser.add_argument('--model', type=str, default='ShortCNN')
     parser.add_argument('--epochs', type=int, default=5)
@@ -198,48 +213,6 @@ if __name__ == '__main__':
     with open(args.sets) as f:
         sets = json.load(f)
     label_type = sets['label_type']
-
-    # sets = {
-    #     'train': '/media/HDD/BigEarthNet-S2-v1.0/records/train.tfrecord',
-    #     'val': '/home/verlyndem/Documents/data/val.tfrecord',
-    #     'test': '/home/verlyndem/Documents/data/test.tfrecord'
-    # }
-    # label_type = 'original'
-
-    # sets = {
-    #     'train': '/home/verlyndem/Documents/data/small/train_small0_w.tfrecord',
-    #     'val': '/home/verlyndem/Documents/data/val.tfrecord',
-    #     'test': '/home/verlyndem/Documents/data/test.tfrecord'
-    # }
-    # label_type = 'original'
-
-    # sets = {
-    #     'train': '/media/HDD/BigEarthNet-S2-v2.0/tfrecords/train.tfrecord',
-    #     'val': '/media/HDD/BigEarthNet-S2-v2.0/tfrecords/validation.tfrecord',
-    #     'test': '/media/HDD/BigEarthNet-S2-v2.0/tfrecords/test.tfrecord'
-    # }
-    # label_type = 'v2'
-
-    # sets = {
-    #     'train': '/media/HDD/BigEarthNet-S2-v2.0/tfrecords/strat/train.tfrecord',
-    #     'val': '/media/HDD/BigEarthNet-S2-v2.0/tfrecords/strat/validation.tfrecord',
-    #     'test': '/media/HDD/BigEarthNet-S2-v2.0/tfrecords/strat/test.tfrecord'
-    # }
-    # label_type = 'v2'
-
-    # sets = {
-    #     'train': '/media/HDD/BigEarthNet-S2-v2.0/strat/train.tfrecord',
-    #     'val': '/media/HDD/BigEarthNet-S2-v2.0/tfrecords/validation.tfrecord',
-    #     'test': '/media/HDD/BigEarthNet-S2-v2.0/tfrecords/test.tfrecord'
-    # }
-    # label_type = 'v2'
-
-    # sets = {
-    #     'train': '/home/verlyndem/Documents/data/strat/train_strat.tfrecord',
-    #     'val': '/home/verlyndem/Documents/data/strat/val_strat.tfrecord',
-    #     'test': '/home/verlyndem/Documents/data/strat/test_strat.tfrecord'
-    # }
-    # label_type = 'original'
 
     preproc = None
     if args.model == 'ShortCNN' and args.rgb:

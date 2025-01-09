@@ -2,22 +2,23 @@
 
 This repository contains the code for to train deep learning models on the BigEarthNet dataset [[1]](#1).
 
-<span style="background-color:rgb(255, 0, 0)">Work in progress</span>
+**WORK IN PROGRESS**
+
+![Label distribution](./doc/split_label_distribution.jpg)
 
 ## Repository structure
 
 ```bash
 .
 ├── data
-│   └── splits
-│       ├── original
-│       │   ├── test.csv
-│       │   ├── train.csv
-│       │   └── val.csv
-│       └── resampled
-│           ├── test.csv
-│           ├── train.csv
-│           └── val.csv
+│   ├── original
+│   │   ├── test.csv
+│   │   ├── train.csv
+│   │   └── val.csv
+│   └── resampled
+│       ├── test.csv
+│       ├── train.csv
+│       └── val.csv
 ├── environment.yml
 ├── README.md
 ├── sets.json
@@ -41,7 +42,7 @@ This repository contains the code for to train deep learning models on the BigEa
 ### Data download
 Data description and download link are available on this [https://bigearth.net/v1.0.html](link).
 
-<span style="background-color:rgb(255, 145, 0)">Warning:</span> ~66GB are required to store the data
+**Warning:** ~66GB are required to store the data
 
 ### Dependencies
 
@@ -53,15 +54,28 @@ conda activate balanced-bigearthnet
 
 ## Usage
 
-```bash
-python train.py --sets [JSON PATH WITH SET PATHS] --epochs [NUMBER OF EPOCHS] --optim [OPTIIMIZER USED] --lr [FLOAT LEARNING RATE] --loss [LOSS FUNCTION USED] --batch [BATCH SIZE] --finetune [FINETUNING LEVEL] --seed [RANDOM SEED] --storage_path [EVENT STORAGE PATH] --count --rgb
-```
-
-```bash
-stratified_split.py [-h] [-d DATA_FOLDER] [-k NUMBER OF SPLITS] [-o OUTPUT_FOLDER] [-r ROOT_FOLDER] [-tf FLAG TO CREATE TFRECORD FILES]```
-
+To **create the TFRecord files** containing the data and used in the training file, use the file `prep_splits.py` made by G. Sumbul et al. [[1]](#1)
 ```bash
 prep_splits.py [-h] [-r ROOT_FOLDER] [-o OUT_FOLDER] [-n PATCH_NAMES [PATCH_NAMES ...]]
+```
+Example:
+```bash
+prep_splits.py -r BigEarthNet-S2-v1.0/BigEarthNet-v1.0 -o results -n data/original/train.csv data/original/val.csv data/original/test.csv
+```
+
+To **create balanced splits** to create the TFRecord files, use the file `stratified_split.py`.
+```bash
+stratified_split.py [-h] [-d DATA_FILE] [-k NUMBER OF SPLITS] [-o OUTPUT_FOLDER] [-r ROOT_FOLDER] [-tf]
+```
+
+To **train your model** using the the TFRecord files, use the file `train.py`.
+```bash
+train.py [-h] [--sets JSON_PATH_WITH_TFRECORD_PATHS] [--epochs NUMBER_OF_EPOCHS] [--optim OPTIIMIZER_USED] [--lr FLOAT_LEARNING_RATE] [--loss LOSS_FUNCTION] [--batch BATCH_SIZE] [--finetune FINETUNING_LEVEL] [--seed RANDOM_SEED] [--storage_path EVENT_STORAGE_PATH] [--count] [--rgb]
+```
+
+To **plot your results** after training using the training event file created, use the file `read_event.py`.
+```bash
+python src/read_event.py [-h] [--storage_path EVENT_STORAGE_PATH]
 ```
 
 ## Dataset description

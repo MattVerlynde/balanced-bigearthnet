@@ -48,7 +48,7 @@ def plot_losses(losses, save_path):
     os.makedirs(save_path, exist_ok=True)
 
     fig = px.scatter(x=range(len(losses)), y=losses, title='Losses')
-    fig.write_html(save_path+'/losses.html', include_mathjax='cdn', include_plotlyjs='/home/verlyndem/Documents/cahier-labo-these/static/plotly.min.js')
+    fig.write_html(save_path+'/losses.html', include_mathjax='cdn')
 
     plt.plot(losses,"*")
     plt.ylabel('Loss')
@@ -63,7 +63,7 @@ def plot_accuracies(accuracies, save_path):
     os.makedirs(save_path, exist_ok=True)
 
     fig = px.scatter(x=range(len(accuracies)), y=accuracies, title='Accuracies')
-    fig.write_html(save_path+'/accuracies.html', include_mathjax='cdn', include_plotlyjs='/home/verlyndem/Documents/cahier-labo-these/static/plotly.min.js')
+    fig.write_html(save_path+'/accuracies.html', include_mathjax='cdn')
 
     plt.plot(accuracies,"*")
     plt.ylabel('Accuracy')
@@ -92,9 +92,9 @@ def plot_train_val(storage_path):
 
 
 if __name__ == '__main__':
-    parser = argparse.ArgumentParser()
+    parser = argparse.ArgumentParser(description=
+        'This script creates accuracy and loss value evolution plots from event file after training on the BigEarthNet dataset.')
 
     parser.add_argument('--storage_path', type=str, required=True)
     args = parser.parse_args()
-    model_path = args.storage_path + '/ShortCNN_RGB'
-    plot_train_val(model_path)
+    plot_train_val(args.storage_path)
