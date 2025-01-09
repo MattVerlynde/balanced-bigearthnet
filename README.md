@@ -103,11 +103,7 @@ train.py --sets sets.json --epochs 100 --optim SGD --lr 0.001 --loss BCEWithLogi
   </tr>
  </table>
 
- <table style="background-color:#FFFFFF;">
-  <tr>
-    <td><img src="./doc/split_label_distribution.jpg" /></td>
-  </tr>
-</table>
+![Label distribution](./doc/split_label_distribution.jpg)
 
 | Acronym  | Label |
 |----------|-------|
