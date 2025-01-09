@@ -4,8 +4,6 @@ This repository contains the code for to train deep learning models on the BigEa
 
 **WORK IN PROGRESS**
 
-![Label distribution](./doc/split_label_distribution.jpg)
-
 ## Repository structure
 
 ```bash
@@ -104,6 +102,12 @@ train.py --sets sets.json --epochs 100 --optim SGD --lr 0.001 --loss BCEWithLogi
     <td>Pastures <br> Broad-leaved forest <br> Mixed forest <br> Natural grassland <br> Transitional woodland/shrub</td>
   </tr>
  </table>
+
+ <table style="background-color:#FFFFFF;">
+  <tr>
+    <td><img src="./doc/split_label_distribution.jpg" /></td>
+  </tr>
+</table>
 
 | Acronym  | Label |
 |----------|-------|
