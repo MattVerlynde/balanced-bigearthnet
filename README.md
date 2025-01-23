@@ -19,7 +19,11 @@ This repository contains the code for to train deep learning models on the BigEa
 │       ├── train.csv
 │       └── val.csv
 ├── doc
-│   └── split_label_distribution.jpg
+│   ├── submit_IGARSS_2025.pdf
+│   ├── static
+│   │   ├── split_label_distribution.jpg
+│   │   ├── ex_bigen_1.png
+│   │   └── ex_bigen_2.png
 ├── environment.yml
 ├── LICENCE
 ├── README.md
@@ -43,6 +47,7 @@ This repository contains the code for to train deep learning models on the BigEa
 ## Installation
 
 ### Data download
+
 Data description and download link are available on this [https://bigearth.net/v1.0.html](link).
 
 **Warning:** ~66GB are required to store the data
@@ -60,11 +65,11 @@ conda activate balanced-bigearthnet
 | File | Associated command | Description |
 | ---- | ------------------ | ----------- |
 | prep_splits.py  | `prep_splits.py [-h] [-r ROOT_FOLDER] [-o OUT_FOLDER] [-n PATCH_NAMES [PATCH_NAMES ...]]` | Creates the TFRecord files containing the data and used in the training file |
-| stratified_split.py  | `stratified_split.py [-h] [-d DATA_FILE] [-k NUMBER OF SPLITS] [-o OUTPUT_FOLDER] [-r ROOT_FOLDER] [-tf]` | Creates balanced splits to create the TFRecord files |
+| stratified_split.py  | `stratified_split.py [-h] [-d DATA_FILE] [-k NUMBER OF SPLITS] [-o OUTPUT_FOLDER] [-r ROOT_FOLDER] [-tf]` | Creates balanced splits to create the TFRecord files. **Warning:** each splits created will be the same size ! |
 | train.py  | `train.py [-h] [--sets JSON_PATH_WITH_TFRECORD_PATHS] [--epochs NUMBER_OF_EPOCHS] [--optim OPTIIMIZER_USED] [--lr FLOAT_LEARNING_RATE] [--loss LOSS_FUNCTION] [--batch BATCH_SIZE] [--finetune FINETUNING_LEVEL] [--seed RANDOM_SEED] [--storage_path EVENT_STORAGE_PATH] [--count] [--rgb]` | Trains your model using the the TFRecord files |
 | read_event.py  | `src/read_event.py [-h] [--storage_path EVENT_STORAGE_PATH]` | Plots your results after training using the training event file created |
 
-
+<!--
 To **create the TFRecord files** containing the data and used in the training file, use the file `prep_splits.py` made by G. Sumbul et al. [[1]](#1)
 ```bash
 prep_splits.py [-h] [-r ROOT_FOLDER] [-o OUT_FOLDER] [-n PATCH_NAMES [PATCH_NAMES ...]]
@@ -85,6 +90,7 @@ To **plot your results** after training using the training event file created, u
 ```bash
 src/read_event.py [-h] [--storage_path EVENT_STORAGE_PATH]
 ```
+-->
 
 Example:
 ```bash
@@ -102,16 +108,16 @@ train.py --sets sets.json --epochs 100 --optim SGD --lr 0.001 --loss BCEWithLogi
 
 <table>
   <tr>
-    <td><img src="doc/ex_bigen_1.png" width="200" /></td>
+    <td><img src="doc/static/ex_bigen_1.png" width="200" /></td>
     <td>Discontinuous urban fabric <br> Beaches, dunes, sands <br> Salt marches <br> Intertidal flats <br> Estuaries</td>
   </tr>
   <tr>
-    <td><img src="doc/ex_bigen_2.png" width="200" /></td>
+    <td><img src="doc/static/ex_bigen_2.png" width="200" /></td>
     <td>Pastures <br> Broad-leaved forest <br> Mixed forest <br> Natural grassland <br> Transitional woodland/shrub</td>
   </tr>
- </table>
+</table>
 
-![Label distribution](./doc/split_label_distribution.jpg)
+![Label distribution](./doc/static/split_label_distribution.jpg)
 
 | Acronym  | Label |
 |----------|-------|
