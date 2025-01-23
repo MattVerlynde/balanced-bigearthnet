@@ -57,6 +57,14 @@ conda activate balanced-bigearthnet
 
 ## Usage
 
+| File | Associated command | Description |
+| ---- | ------------------ | ----------- |
+| prep_splits.py  | `prep_splits.py [-h] [-r ROOT_FOLDER] [-o OUT_FOLDER] [-n PATCH_NAMES [PATCH_NAMES ...]]` | Creates the TFRecord files containing the data and used in the training file |
+| stratified_split.py  | `stratified_split.py [-h] [-d DATA_FILE] [-k NUMBER OF SPLITS] [-o OUTPUT_FOLDER] [-r ROOT_FOLDER] [-tf]` | Creates balanced splits to create the TFRecord files |
+| train.py  | `train.py [-h] [--sets JSON_PATH_WITH_TFRECORD_PATHS] [--epochs NUMBER_OF_EPOCHS] [--optim OPTIIMIZER_USED] [--lr FLOAT_LEARNING_RATE] [--loss LOSS_FUNCTION] [--batch BATCH_SIZE] [--finetune FINETUNING_LEVEL] [--seed RANDOM_SEED] [--storage_path EVENT_STORAGE_PATH] [--count] [--rgb]` | Trains your model using the the TFRecord files |
+| read_event.py  | `src/read_event.py [-h] [--storage_path EVENT_STORAGE_PATH]` | Plots your results after training using the training event file created |
+
+
 To **create the TFRecord files** containing the data and used in the training file, use the file `prep_splits.py` made by G. Sumbul et al. [[1]](#1)
 ```bash
 prep_splits.py [-h] [-r ROOT_FOLDER] [-o OUT_FOLDER] [-n PATCH_NAMES [PATCH_NAMES ...]]
@@ -75,7 +83,7 @@ train.py [-h] [--sets JSON_PATH_WITH_TFRECORD_PATHS] [--epochs NUMBER_OF_EPOCHS]
 
 To **plot your results** after training using the training event file created, use the file `read_event.py`.
 ```bash
-python src/read_event.py [-h] [--storage_path EVENT_STORAGE_PATH]
+src/read_event.py [-h] [--storage_path EVENT_STORAGE_PATH]
 ```
 
 Example:

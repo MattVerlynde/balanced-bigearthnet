@@ -48,7 +48,7 @@ def plot_losses(losses, save_path):
     os.makedirs(save_path, exist_ok=True)
 
     fig = px.scatter(x=range(len(losses)), y=losses, title='Losses')
-    fig.write_html(save_path+'/losses.html', include_mathjax='cdn')
+    fig.write_html(save_path+'/losses.html', include_mathjax='cdn', include_plotlyjs='cdn')
 
     plt.plot(losses,"*")
     plt.ylabel('Loss')
@@ -63,7 +63,7 @@ def plot_accuracies(accuracies, save_path):
     os.makedirs(save_path, exist_ok=True)
 
     fig = px.scatter(x=range(len(accuracies)), y=accuracies, title='Accuracies')
-    fig.write_html(save_path+'/accuracies.html', include_mathjax='cdn')
+    fig.write_html(save_path+'/accuracies.html', include_mathjax='cdn', include_plotlyjs='cdn')
 
     plt.plot(accuracies,"*")
     plt.ylabel('Accuracy')
@@ -74,7 +74,7 @@ def plot_accuracies(accuracies, save_path):
     plt.close()
 
 def plot_train_val(storage_path):
-    save_path = storage_path + '/../plots'
+    save_path = storage_path + '/plots'
     os.makedirs(save_path, exist_ok=True)
     for root, dirs, files in os.walk(storage_path):
         for name in files:
@@ -87,7 +87,7 @@ def plot_train_val(storage_path):
                 losses, accuracies, sample = read_event_solo(path)
                 plot_losses(losses,save_path+'/losses_all')
                 plot_accuracies(accuracies,save_path+'/accuracies_all')
-                pd.DataFrame({"loss":losses, "accuracy":accuracies, "sample":sample}).to_csv(save_path+'/../output/losses_accuracies_all.csv')
+                pd.DataFrame({"loss":losses, "accuracy":accuracies, "sample":sample}).to_csv(save_path+'/output/losses_accuracies_all.csv')
     
 
 
