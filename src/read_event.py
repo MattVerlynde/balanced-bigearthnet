@@ -1,3 +1,17 @@
+#!/usr/bin/env python
+# -*- coding: utf-8 -*-
+#
+# This script plots the results after training 
+# using the training event file created
+# 
+# read_event.py --help can be used to learn how to use this script.
+#
+# Author: Matthieu Verlynde
+# Email: matthieu.verlynde@univ-smb.fr
+# Date: 8 jan 2024
+# Version: 1.0.0
+# Usage: read_event.py [-h] [--storage_path EVENT_STORAGE_PATH]      
+# 
 from tensorflow.python.summary.summary_iterator import summary_iterator
 import argparse
 import matplotlib.pyplot as plt
